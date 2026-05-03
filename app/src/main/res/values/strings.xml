@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CatchTheDarwin</string>
+    <string name="darwin">Darwin</string>
+    <string name="time">Time:</string>
+    <string name="score">Score: %d</string>
 </resources>

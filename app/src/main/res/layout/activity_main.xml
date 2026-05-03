@@ -8,48 +8,49 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/time2"
-        android:layout_width="92dp"
-        android:layout_height="36dp"
+        android:id="@+id/scoreText"
+        android:layout_width="115dp"
+        android:layout_height="40dp"
         android:layout_marginBottom="40dp"
-        android:text="Score:"
+        android:text="@string/score"
         android:textAlignment="center"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.554"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/time"
+        android:id="@+id/timeText"
         android:layout_width="92dp"
         android:layout_height="36dp"
         android:layout_marginTop="40dp"
-        android:text="Time:"
+        android:text="@string/time"
         android:textAlignment="center"
         android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/time2"
+        app:layout_constraintBottom_toTopOf="@+id/scoreText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.586"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.003" />
 
-    <Button
-        android:id="@+id/button"
-        style="@style/Widget.Material3.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="390dp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="128dp"
-        android:layout_height="147dp"
-        app:srcCompat="@drawable/darwin"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="208dp" />
+    <ImageButton
+        android:id="@+id/buttonDarwin"
+        style="?attr/imageButtonStyle"
+        android:layout_width="120dp"
+        android:layout_height="112dp"
+        android:background="#00000000"
+        android:contentDescription="@string/darwin"
+        android:drawableBottom="@drawable/darwin"
+        android:onClick="setScore"
+        android:scaleType="fitCenter"
+        android:src="@drawable/darwin"
+        app:layout_constraintBottom_toTopOf="@+id/scoreText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeText"
+        app:layout_constraintVertical_bias="0.503" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

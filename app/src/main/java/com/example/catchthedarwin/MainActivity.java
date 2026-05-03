@@ -1,6 +1,8 @@
 package com.example.catchthedarwin;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +11,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView timeText;
+    TextView scoreText;
+    int scoreValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +26,21 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        timeText = findViewById(R.id.timeText);
+        scoreText = findViewById(R.id.scoreText);
+        scoreText.setText(getString(R.string.score,scoreValue));
     }
+
+
+    public void setScore(View view){
+        ++scoreValue;
+        scoreText.setText(getString(R.string.score,scoreValue));
+
+
+    }
+
+
+
+
 }
