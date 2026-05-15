@@ -11,29 +11,27 @@
         android:id="@+id/scoreText"
         android:layout_width="115dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="28dp"
         android:text="@string/score"
         android:textAlignment="center"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.554"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/timeText"
-        android:layout_width="92dp"
+        android:layout_width="133dp"
         android:layout_height="36dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
         android:text="@string/time"
         android:textAlignment="center"
         android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/scoreText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintEnd_toStartOf="@+id/scoreText"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.003" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/buttonDarwin"
@@ -46,11 +44,38 @@
         android:onClick="setScore"
         android:scaleType="fitCenter"
         android:src="@drawable/darwin"
-        app:layout_constraintBottom_toTopOf="@+id/scoreText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeText"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintTop_toBottomOf="@+id/explainText"
+        app:layout_constraintVertical_bias="0.163" />
+
+    <TextView
+        android:id="@+id/explainText"
+        android:layout_width="248dp"
+        android:layout_height="93dp"
+        android:text="@string/starterText"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.191" />
+
+    <TextView
+        android:id="@+id/bestText"
+        android:layout_width="134dp"
+        android:layout_height="51dp"
+        android:text="@string/bestScore"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/explainText"
+        app:layout_constraintVertical_bias="0.772" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

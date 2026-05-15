@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CatchTheDarwin</string>
     <string name="darwin">Darwin</string>
-    <string name="time">Time:</string>
+    <string name="time">Time: %d</string>
     <string name="score">Score: %d</string>
+    <string name="starterText">Click on Darwin to play.</string>
+    <string name="finished_status">finished</string>
+    <string name="bestScore">Best: %d</string>
 </resources>
