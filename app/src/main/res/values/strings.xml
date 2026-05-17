@@ -4,7 +4,7 @@
     <string name="darwin">Darwin</string>
     <string name="time">Time: %d</string>
     <string name="score">Score: %d</string>
-    <string name="starterText">Click on Darwin to play.</string>
+    <string name="starterText">Click on Darwin to play</string>
     <string name="finished_status">finished</string>
     <string name="bestScore">Best: %d</string>
 </resources>

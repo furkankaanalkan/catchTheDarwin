@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.provider.Settings;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     boolean lever = false;
     SharedPreferences sharedPref;
     int bestScore;
+    LinearLayout scoreLayout;
+    LinearLayout bestLayout;
+    LinearLayout darwinLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +44,16 @@ public class MainActivity extends AppCompatActivity {
         scoreText = findViewById(R.id.scoreText);
         explainText = findViewById(R.id.explainText);
         bestText = findViewById(R.id.bestText);
+
+        scoreLayout = findViewById(R.id.scoreLayout);
+        bestLayout = findViewById(R.id.bestLayout);
+        darwinLayout = findViewById(R.id.darwinLayout);
+
         sharedPref = this.getSharedPreferences("com.example.catchthedarwin", Context.MODE_PRIVATE);
         bestScore = sharedPref.getInt("best", 0);
 
-        timeText.setVisibility(View.INVISIBLE);
-        scoreText.setVisibility(View.INVISIBLE);
+        scoreLayout.setVisibility(View.INVISIBLE);
+
         bestText.setText(getString(R.string.bestScore,bestScore));
 
          if (bestScore == 0) {
@@ -62,19 +70,17 @@ public class MainActivity extends AppCompatActivity {
             scoreValue = 0;
             scoreText.setText(getString(R.string.score,scoreValue));
 
-            timeText.setVisibility(View.VISIBLE);
-            scoreText.setVisibility(View.VISIBLE);
-            explainText.setVisibility(View.INVISIBLE);
-            bestText.setVisibility(View.INVISIBLE);
+            scoreLayout.setVisibility(View.VISIBLE);
+            bestLayout.setVisibility(View.GONE);
 
             new CountDownTimer(5000, 1000) {
                 @Override
                 public void onFinish() {
                     Toast.makeText(getApplicationContext(),"Game Over!",Toast.LENGTH_LONG).show();
-                    timeText.setVisibility(View.INVISIBLE);
-                    scoreText.setVisibility(View.INVISIBLE);
-                    explainText.setVisibility(View.VISIBLE);
-                    bestText.setVisibility(View.VISIBLE);
+
+                    bestLayout.setVisibility(View.VISIBLE);
+                    scoreLayout.setVisibility(View.INVISIBLE);
+
                     if (scoreValue>bestScore){
                         sharedPref.edit().putInt("best",bestScore).apply();
                         bestScore = scoreValue;
@@ -97,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             lever = true;
         }
         else {
+
             scoreValue++;
             scoreText.setText(getString(R.string.score,scoreValue));
         }

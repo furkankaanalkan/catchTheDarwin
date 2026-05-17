@@ -7,76 +7,66 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/scoreText"
-        android:layout_width="115dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="28dp"
-        android:text="@string/score"
-        android:textAlignment="center"
-        android:textSize="26sp"
+    <LinearLayout
+        android:id="@+id/scoreLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/timeText"
-        android:layout_width="133dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/time"
-        android:textAlignment="center"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toStartOf="@+id/scoreText"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/buttonDarwin"
-        style="?attr/imageButtonStyle"
-        android:layout_width="120dp"
-        android:layout_height="112dp"
-        android:background="#00000000"
-        android:contentDescription="@string/darwin"
-        android:drawableBottom="@drawable/darwin"
-        android:onClick="setScoreandtime"
-        android:scaleType="fitCenter"
-        android:src="@drawable/darwin"
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/time"
+            android:textAlignment="center"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/score"
+            android:textAlignment="center"
+            android:textSize="26sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bestLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explainText"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/explainText"
-        android:layout_width="248dp"
-        android:layout_height="93dp"
-        android:text="@string/starterText"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        <TextView
+            android:id="@+id/explainText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="32dp"
+            android:layout_weight="1"
+            android:text="@string/starterText"
+            android:textAlignment="center"
+            android:textSize="34sp" />
 
-    <TextView
-        android:id="@+id/bestText"
-        android:layout_width="134dp"
-        android:layout_height="51dp"
-        android:text="@string/bestScore"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explainText"
-        app:layout_constraintVertical_bias="0.772" />
+        <TextView
+            android:id="@+id/bestText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bestScore"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/button"
@@ -84,7 +74,32 @@
         android:layout_height="26dp"
         android:onClick="delete"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bestLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/darwinLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreLayout">
+
+        <ImageButton
+            android:id="@+id/buttonDarwin"
+            style="?attr/imageButtonStyle"
+            android:layout_width="102dp"
+            android:layout_height="85dp"
+            android:background="#00000000"
+            android:contentDescription="@string/darwin"
+            android:drawableBottom="@drawable/darwin"
+            android:onClick="setScoreandtime"
+            android:scaleType="fitCenter"
+            android:src="@drawable/darwin" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
