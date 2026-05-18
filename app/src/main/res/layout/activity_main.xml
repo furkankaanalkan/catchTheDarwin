@@ -7,6 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/buttonDarwin"
+        style="?attr/imageButtonStyle"
+        android:layout_width="122dp"
+        android:layout_height="109dp"
+        android:background="#00000000"
+        android:contentDescription="@string/darwin"
+        android:drawableBottom="@drawable/darwin"
+        android:onClick="setScoreandtime"
+        android:scaleType="fitCenter"
+        android:src="@drawable/darwin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreLayout"
+        app:layout_constraintVertical_bias="0.3" />
+
     <LinearLayout
         android:id="@+id/scoreLayout"
         android:layout_width="match_parent"
@@ -73,33 +91,10 @@
         android:layout_width="60dp"
         android:layout_height="26dp"
         android:onClick="delete"
-        android:text="Button"
+        android:text="@string/button"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/bestLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/darwinLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreLayout">
-
-        <ImageButton
-            android:id="@+id/buttonDarwin"
-            style="?attr/imageButtonStyle"
-            android:layout_width="102dp"
-            android:layout_height="85dp"
-            android:background="#00000000"
-            android:contentDescription="@string/darwin"
-            android:drawableBottom="@drawable/darwin"
-            android:onClick="setScoreandtime"
-            android:scaleType="fitCenter"
-            android:src="@drawable/darwin" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,5 @@
     <string name="starterText">Click on Darwin to play</string>
     <string name="finished_status">finished</string>
     <string name="bestScore">Best: %d</string>
+    <string name="button">Button</string>
 </resources>

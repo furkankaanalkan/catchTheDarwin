@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import android.util.DisplayMetrics;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +31,20 @@ public class MainActivity extends AppCompatActivity {
     int bestScore;
     LinearLayout scoreLayout;
     LinearLayout bestLayout;
-    LinearLayout darwinLayout;
+    ImageButton darwin;
+    int randomX;
+    int randomY;
+
+    int screenWidthDP;
+    int screenHeightDP;
+    float density;
+    int maxY = -150;
+    int minY = 120;
+    int xBorder;
+    float darwinNormalY;
+    float borderOfScoreboardY;
+    int dynamicMaxY;
+    int dynamicMinY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         scoreText = findViewById(R.id.scoreText);
         explainText = findViewById(R.id.explainText);
         bestText = findViewById(R.id.bestText);
+        darwin = findViewById(R.id.buttonDarwin);
 
         scoreLayout = findViewById(R.id.scoreLayout);
         bestLayout = findViewById(R.id.bestLayout);
-        darwinLayout = findViewById(R.id.darwinLayout);
 
         sharedPref = this.getSharedPreferences("com.example.catchthedarwin", Context.MODE_PRIVATE);
         bestScore = sharedPref.getInt("best", 0);
@@ -60,9 +77,33 @@ public class MainActivity extends AppCompatActivity {
             bestText.setVisibility(View.INVISIBLE);
         }
 
+        DisplayMetrics displayMetrics = new android.util.DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        density = displayMetrics.density;
+
+        screenWidthDP = (int) (displayMetrics.widthPixels / density);
+        screenHeightDP = (int) (displayMetrics.heightPixels / density);
+
+        xBorder = (screenWidthDP / 2) - 60;
+        if (xBorder <= 0) xBorder = 50;
+
+        darwinNormalY = darwin.getTop();
+        borderOfScoreboardY = timeText.getTop();
+
+        dynamicMaxY = -((int) (darwinNormalY / density)) + 40;
+        dynamicMinY = ((int) ((borderOfScoreboardY - darwinNormalY) / density)) - 80;
+
+        if (dynamicMaxY >= 0) dynamicMaxY = -150;
+        if (dynamicMinY <= 0) dynamicMinY = 100;
+
 
         }
 
+    public int dpToPx(int dp) {
+        density = getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
 
 
     public void setScoreandtime(View view){
@@ -73,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             scoreLayout.setVisibility(View.VISIBLE);
             bestLayout.setVisibility(View.GONE);
 
-            new CountDownTimer(5000, 1000) {
+            new CountDownTimer(30000, 1000) {
                 @Override
                 public void onFinish() {
                     Toast.makeText(getApplicationContext(),"Game Over!",Toast.LENGTH_LONG).show();
@@ -97,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     timeText.setText(getString(R.string.time, millisUntilFinished / 1000));
+                    randomX = new Random().nextInt(xBorder * 2) - xBorder;
+                    randomY = new Random().nextInt(dynamicMinY - dynamicMaxY + 1) + dynamicMaxY;
+                    darwin.setTranslationX(dpToPx(randomX));
+                    darwin.setTranslationY(dpToPx(randomY));
 
                 }
             }.start();
