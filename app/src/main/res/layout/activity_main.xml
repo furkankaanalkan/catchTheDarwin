@@ -15,7 +15,7 @@
         android:background="#00000000"
         android:contentDescription="@string/darwin"
         android:drawableBottom="@drawable/darwin"
-        android:onClick="setScoreandtime"
+        android:onClick="setScoreAndTime"
         android:scaleType="fitCenter"
         android:src="@drawable/darwin"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,10 +30,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:fitsSystemWindows="true"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/timeText"
@@ -42,7 +44,7 @@
             android:layout_weight="1"
             android:text="@string/time"
             android:textAlignment="center"
-            android:textSize="26sp" />
+            android:textSize="26sp"/>
 
         <TextView
             android:id="@+id/scoreText"
@@ -69,7 +71,7 @@
         <TextView
             android:id="@+id/explainText"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:layout_marginBottom="32dp"
             android:layout_weight="1"
             android:text="@string/starterText"
